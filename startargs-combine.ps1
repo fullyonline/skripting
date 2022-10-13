@@ -20,7 +20,8 @@ if ($url2) {
 if ($url3) {
     $lenght = $lenght + 1
 }
-Write-Output "Anzahl argumente: " $args.Length
+Write-Output "Anzahl argumente: " 
+$lenght
 Write-Output "URL1:"
 $url1
 Validate-IP $url1
