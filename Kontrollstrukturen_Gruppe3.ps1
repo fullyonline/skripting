@@ -83,10 +83,11 @@ foreach ($item in $array) {
     } 
 }
 
-# continue -- nächster Schlaufendurchlauf
+# continue --> nächster Schlaufendurchlauf
+$array = 42, 20, 60, 41
 foreach ($item in $array) {
-    $item
     if ($item % 20 -eq 0) {
         continue
     }
+    $item
 }
