@@ -1,3 +1,10 @@
+# Template:
+Import-Module D:\Serioese_Projekte\Juventus\Module\TemplateTest\bin\Release\netstandard2.0\TemplateTest.dll
+Test-SampleCmdlet -FavoriteNumber 2 -FavoritePet Dog
+Test-SampleCmdlet -FavoriteNumber 2 -Animal Dog
+
+
+# Eigenes Projekt
 Import-Module D:\Serioese_Projekte\Juventus\Module\TestCmdLet\bin\Release\net6.0\TestCmdLet.dll
 # schauen ob das Modul Importiert wurde:
 Get-Module
@@ -27,16 +34,14 @@ New-MarkdownAboutHelp -OutputFolder $OutputFolder -AboutName "Get_Greeting"
 Update-MarkdownHelpModule -Path $OutputFolder -RefreshModulePage
 
 # Erstellen der .xml-Hilfedatei
-New-ExternalHelp -Path $OutputFolder -OutputPath "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\TestCmdLet" -Force
+New-ExternalHelp -Path $OutputFolder -OutputPath "D:\Serioese_Projekte\Juventus\Module\TestCmdLet\bin\Release\net6.0\en-US" -Force
 
 # Preview der Hilfe
-Get-HelpPreview -Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\TestCmdLet\TestCmdLet.dll-Help.xml"
-
-# Nun packen und hochladen
-
+# auch mögliche Pfade: fr-FR
+Get-HelpPreview -Path "D:\Serioese_Projekte\Juventus\Module\TestCmdLet\bin\Release\net6.0\en-US\TestCmdLet.dll-Help.xml"
 
 # Get-Help
-Get-Help Get-Greeting
+Get-Help Get-Greeting -Detailed
 
 # Greeting holen
 "Herbert", "Markus" | Get-Greeting
