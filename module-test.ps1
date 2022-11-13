@@ -82,3 +82,27 @@ $out | Get-Member
 # gebe Hilfen aus
 $fs = Get-ChildItem C:\Windows\System32\WindowsPowerShell\v1.0\Modules -Recurse 
 $fs | Where { $_.Name -like "*dll-Help.xml" } | Select FullName
+
+
+
+#
+# Demo
+# 
+ 
+# Zeigen des Sourcecodes von Greeting
+
+# Greeting
+Import-Module D:\Serioese_Projekte\Juventus\Module\TestCmdLet\bin\Release\net6.0\TestCmdLet.dll
+
+"Herbert", "Markus" | Get-Greeting      # mit Pipeline
+Get-Greeting -Name "Herbert", "Markus"  # mit Params
+Get-Greeting -N "Herbert", "Markus"     # mit Alias des Params
+
+# Animal
+Import-Module D:\Serioese_Projekte\Juventus\Module\TemplateTest\bin\Release\netstandard2.0\TemplateTest.dll
+
+Test-SampleCmdlet -FavoriteNumber 2 -FavoritePet Dog        # valid
+Test-SampleCmdlet -FavoriteNumber 2 -FavoritePet "TEST"     # invalid
+
+# Hilfe:
+Get-Help Get-Greeting
