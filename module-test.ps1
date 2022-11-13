@@ -1,20 +1,49 @@
+# Installation mit Adminrechten!
+Install-Module platyps -Force
+
+#
 # Template:
+#
+
 Import-Module D:\Serioese_Projekte\Juventus\Module\TemplateTest\bin\Release\netstandard2.0\TemplateTest.dll
 Test-SampleCmdlet -FavoriteNumber 2 -FavoritePet Dog
-Test-SampleCmdlet -FavoriteNumber 2 -Animal Dog
+
+# Neues Helpfile erzeugen
+Import-Module platyps
+$OutputFolder = "D:\Serioese_Projekte\Juventus\Module\TemplateTest\bin\Release\netstandard2.0"
+$parameters = @{
+    Module                = "TemplateTest"
+    OutputFolder          = $OutputFolder
+    AlphabeticParamsOrder = $true
+    WithModulePage        = $true
+    ExcludeDontShow       = $true
+    Encoding              = [System.Text.Encoding]::UTF8
+}
+# generiert 2x .md files, welche nur noch bearbeitet werden müssen.
+New-MarkdownHelp @parameters
+New-MarkdownAboutHelp -OutputFolder $OutputFolder -AboutName "Test_SampleCmdlet"
+
+# Update der MAML-Hilfe, nachdem die .md Datein korrekt sind
+Update-MarkdownHelpModule -Path $OutputFolder -RefreshModulePage
+
+# Erstellen der .xml-Hilfedatei
+New-ExternalHelp -Path $OutputFolder -OutputPath "D:\Serioese_Projekte\Juventus\Module\TemplateTest\bin\Release\netstandard2.0\en-US" -Force
+
+# Preview der Hilfe
+# auch mögliche Pfade: fr-FR
+Get-HelpPreview -Path "D:\Serioese_Projekte\Juventus\Module\TemplateTest\bin\Release\netstandard2.0\en-US\TemplateTest.dll-Help.xml"
+Get-Help Test-SampleCmdlet -Detailed
 
 
+#
 # Eigenes Projekt
+#
+
 Import-Module D:\Serioese_Projekte\Juventus\Module\TestCmdLet\bin\Release\net6.0\TestCmdLet.dll
 # schauen ob das Modul Importiert wurde:
 Get-Module
 # schauen was für Cmdlets wir in diesem Module haben:
 Get-Command -Module TestCmdLet
-
-# Help Datei schreiben
-# Installation mit Adminrechten!
-Install-Module platyps -Force
-
 # Neues Helpfile erzeugen
 Import-Module platyps
 $OutputFolder = "D:\Serioese_Projekte\Juventus\Module\TestCmdLet\bin\Release\net6.0\"
