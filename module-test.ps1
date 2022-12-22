@@ -105,4 +105,4 @@ Test-SampleCmdlet -FavoriteNumber 2 -FavoritePet Dog        # valid
 Test-SampleCmdlet -FavoriteNumber 2 -FavoritePet "TEST"     # invalid
 
 # Hilfe:
-Get-Help Get-Greeting
+Get-Help Get-Greeting -Detailed
